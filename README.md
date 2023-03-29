@@ -28,49 +28,42 @@ Testing the webserver
 
 ## PROGRAM:
 ```
-from http.server import HTTPServer,BaseHTTPRequestHandler
-
-content="""
+from http.server import HTTPServer, BaseHTTPRequestHandler
+content = """
 <!DOCTYPE html>
 <html>
-    <head>
-        <title> Saveetha Engineering college</title>
-    </head>
-    <body text="000000" bgcolor="F5BDFFS">  
-            <h1 align="center"> Saveetha Engineering college</h1>
-            <h2 align="right"> Autonomous</h2>
-                <ul type="square">
-                    <li> CSE(cyber security)</li>
-                    <li> CSE(Iot)</li>
-                    <li> AIDS</li>
-                    <li> AIML</li>
-                    <a href="http://www.saveetha.ac.in">visit our website</a>
-                    
-                </ul>
-
-            </body>
-    </head>
-</html> 
+<head>
+<title>My webserver</title>
+</head>
+<body>
+<h1><u>Top five web application development frameworks.</u><h1>
+<ul>
+<li>Django</li>
+<li>Angular or Angular JS</li>
+<li>Laravel.</li>
+<li>Meteor. </li>
+<li>ASP.NET. </li>
+</body>
+</html>
 """
-
-class MyServer(BaseHTTPRequestHandler):
+class myhandler(BaseHTTPRequestHandler):
     def do_GET(self):
-       print("Get request received...")
-       self.send_response(200)
-       self.send_header('content-type','text/html; charset=utf-8')
-       self.end_headers()
-       self.wfile.write(content.encode())
-
-print("This is my webserver")
-server_address=('',8000)
-httpd = HTTPServer(server_address, MyServer)
+        print("request received")
+        self.send_response(200)
+        self.send_header('content-type', 'text/html; charset=utf-8')
+        self.end_headers()
+        self.wfile.write(content.encode())
+server_address = ('',80)
+httpd = HTTPServer(server_address,myhandler)
+print("my webserver is running...")
 httpd.serve_forever()
+
 ```
 
 ## OUTPUT:
-![web](https://user-images.githubusercontent.com/119417735/228305431-a70bf995-f8b8-421d-ba95-1233cd175c01.png)
+![2023-03-29 (1)](https://user-images.githubusercontent.com/119417735/228418349-76db9b4f-2812-4c8d-801b-d5b43b5fc77e.png)
 
-![webou](https://user-images.githubusercontent.com/119417735/228306772-1e481da3-4a5e-4fdb-a4ec-b5a1fe29c27d.png)
+![2023-03-29](https://user-images.githubusercontent.com/119417735/228418417-e4d268d6-16fc-4d55-816c-e1938689d1a0.png)
 
 ## RESULT:
 The program is executed succesfully.
